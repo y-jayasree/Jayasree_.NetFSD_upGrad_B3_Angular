@@ -1,0 +1,57 @@
+
+h1 {
+    color: darkblue;
+    text-align: center;
+}
+
+h2 {
+    color: rgb(221, 14, 14);
+    text-decoration: underline;
+}
+
+p {
+    font-size: 18px;
+    font-family: Arial;
+    color: black;
+}
+
+.content-section {
+    background-color: #f0f8ff;
+    border: 2px solid blue;
+    padding: 20px;
+    margin: 20px;
+}
+
+.box {
+    background-color: lightgray;
+    border: 3px solid black;
+    padding: 30px;   
+    margin: 40px;    
+    text-align: center;
+}
+
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 2px solid #ccc;
+    width: 300px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #999;
+}
+
+button {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: green;
+}
