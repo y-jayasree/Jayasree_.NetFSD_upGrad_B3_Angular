@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+</head>
+<body>
+    <h2>User Information</h2>
+    <button onclick="showuser()">Display Info</button>
+    <p id='name'></p>
+    <p id='age'></p>
+    <p id='city'></p>
+    <script>
+        function showuser(){
+            var user={
+                name:'Jayasree',
+                age:'21',
+                city:'Bangalore'
+            };
+            display(user);
+        }
+        function display(obj){
+            document.getElementById("name").innerHTML='Name:'+obj.name;
+            document.getElementById("age").innerHTML='Age:'+obj.age;
+            document.getElementById("city").innerHTML='City:'+obj.city;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+</head>
+<body>
+
+<h2>Student Profile</h2>
+
+<div id="profile"></div>
+
+<input type="number" id="newMarks" placeholder="Enter new marks">
+<button onclick="updateMarks()">Update Marks</button>
+
+<script>
+    var student = {
+        name: "Jayasree",
+        rollNo: 101,
+        marks: 80
+    };
+    function updateStudentProfile(obj) {
+        document.getElementById("profile").innerHTML =
+            "Name: " + obj.name + "<br>" +
+            "Roll No: " + obj.rollNo + "<br>" +
+            "Marks: " + obj.marks;
+    }
+    function updateMarks() {
+        var value = document.getElementById("newMarks").value;
+
+        if (value !== "") {
+            student.marks = value;   
+            updateStudentProfile(student); 
+        }
+    }
+    updateStudentProfile(student);
+
+</script>
+
+</body>
+</html>
+
+
