@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Filter</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 15px;
+            width: 60%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+<h2>Employee Details</h2>
+<select id="jobSelect">
+    <option value="All">All Employees</option>
+    <option value="Manager">Manager</option>
+    <option value="Salesman">Salesman</option>
+    <option value="Clerk">Clerk</option>
+</select>
+<button onclick="showEmployees()">Show Emps</button>
+<div id="result"></div>
+<script>
+    var employees = [
+        { empno: 101, name: "King", job: "Manager", salary: 50000 },
+        { empno: 102, name: "Allen", job: "Salesman", salary: 30000 },
+        { empno: 103, name: "Smith", job: "Clerk", salary: 20000 },
+        { empno: 104, name: "Jeo", job: "Manager", salary: 55000 },
+        { empno: 105, name: "Marker", job: "Salesman", salary: 32000 },
+        { empno: 106, name: "James", job: "Manager", salary: 38000 },
+        { empno: 107, name: "John", job: "Salesman", salary: 4000 },
+    ];
+    function showEmployees() {
+
+        var selectedJob = document.getElementById("jobSelect").value;
+
+        var output = "<table>";
+        output += "<tr><th>Emp No</th><th>Name</th><th>Job</th><th>Salary</th></tr>";
+
+        for (var i = 0; i < employees.length; i++) {
+
+            if (selectedJob === "All" || employees[i].job === selectedJob) {
+
+                output += "<tr>";
+                output += "<td>" + employees[i].empno + "</td>";
+                output += "<td>" + employees[i].name + "</td>";
+                output += "<td>" + employees[i].job + "</td>";
+                output += "<td>" + employees[i].salary + "</td>";
+                output += "</tr>";
+            }
+        }
+
+        output += "</table>";
+
+        document.getElementById("result").innerHTML = output;
+    }
+
+</script>
+
+</body>
+</html>
