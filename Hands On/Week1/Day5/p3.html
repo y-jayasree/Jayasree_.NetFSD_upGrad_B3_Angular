@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter app</title>
+</head>
+<body>
+
+    <h2>Counter App</h2>
+
+    <p id="countervalue">0</p>
+
+    <button id="increment">Increment</button>
+    <button id="reset">Reset</button>
+
+    <script>
+        var counter = 0;
+
+        function incrementcount(step){
+            counter += step;
+            document.getElementById('countervalue').innerHTML = counter;
+        }
+
+        function resetcount(){
+            counter = 0;
+            document.getElementById('countervalue').innerHTML = counter;
+        }
+
+        document.getElementById("increment").addEventListener("click", function() {
+            incrementcount(1);
+        });
+
+        document.getElementById("reset").addEventListener("click", function() {
+            resetcount();
+        });
+    </script>
+
+</body>
+</html>
