@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Light Dark Mode</title>
+
+    <style>
+        body {
+            transition: 0.3s;
+        }
+
+        .light {
+            background-color: white;
+            color: black;
+        }
+
+        .dark {
+            background-color: #121212;
+            color: white;
+        }
+
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="toggleBtn">Toggle Theme</button>
+
+    <h2>My Blog</h2>
+    <p>This is a simple blog website.</p>
+
+    <script>
+        const toggleBtn = document.getElementById("toggleBtn");
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme) {
+            document.body.className = savedTheme;
+        } else {
+            document.body.className = "light";
+        }
+        toggleBtn.addEventListener("click", () => {
+            const currentTheme = document.body.className;
+            const newTheme = currentTheme === "light" ? "dark" : "light";
+
+            document.body.className = newTheme;
+            localStorage.setItem("theme", newTheme);
+        });
+    </script>
+
+</body>
+</html>
