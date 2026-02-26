@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Enrollment</title>
+</head>
+<body>
+
+<h2>Course Enrollment Form</h2>
+
+<form>
+
+    <label>Email:</label><br>
+    <input type="email" required><br><br>
+
+    <label>Choose Course:</label><br>
+    <input list="courses" required>
+    <datalist id="courses">
+        <option value="HTML">
+        <option value="CSS">
+        <option value="JavaScript">
+        <option value="Python">
+    </datalist><br><br>
+
+    <label>Age:</label><br>
+    <input type="number" min="18" max="60" required><br><br>
+
+    <label>Skill Level:</label><br>
+    <input type="range" min="1" max="10"><br><br>
+
+    <label>Skill Meter:</label><br>
+    <meter min="0" max="10" value="6"></meter><br><br>
+
+    <label>Enrollment Progress:</label><br>
+    <progress value="70" max="100"></progress><br><br>
+
+    <button type="submit">Enroll</button>
+
+</form>
+
+</body>
+</html>
