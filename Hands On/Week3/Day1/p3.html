@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart with Quantity</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body{font-family:Arial;background:#f4f4f4;}
+        .header{background:#222;color:white;padding:15px;text-align:center;}
+        .container{width:700px;margin:30px auto;}
+        .product{
+            background:white;
+            padding:15px;
+            margin-bottom:15px;
+            border-radius:5px;
+            box-shadow:0 0 5px gray;
+        }
+        button{padding:6px 10px;margin:5px;}
+        .qtyBox{display:none;}
+    </style>
+</head>
+<body>
+
+<div class="header">
+     Cart Items: <span id="cartCount">0</span>
+</div>
+
+<div class="container" id="productList">
+    <div class="product">
+        <h3>Product 1</h3>
+        <button class="addBtn">Add to Cart</button>
+
+        <div class="qtyBox">
+            <button class="dec">-</button>
+            <span class="qty">1</span>
+            <button class="inc">+</button>
+        </div>
+    </div>
+
+    <div class="product">
+        <h3>Product 2</h3>
+        <button class="addBtn">Add to Cart</button>
+
+        <div class="qtyBox">
+            <button class="dec">-</button>
+            <span class="qty">1</span>
+            <button class="inc">+</button>
+        </div>
+    </div>
+
+    <div class="product">
+        <h3>Product 3</h3>
+        <button class="addBtn">Add to Cart</button>
+
+        <div class="qtyBox">
+            <button class="dec">-</button>
+            <span class="qty">1</span>
+            <button class="inc">+</button>
+        </div>
+    </div>
+
+    <div class="product">
+        <h3>Product 4</h3>
+        <button class="addBtn">Add to Cart</button>
+
+        <div class="qtyBox">
+            <button class="dec">-</button>
+            <span class="qty">1</span>
+            <button class="inc">+</button>
+        </div>
+    </div>
+
+
+
+</div>
+
+<script>
+
+$(document).ready(function(){
+
+    let cartCount = 0;
+    $("#productList").on("click", ".addBtn", function(){
+        cartCount++;
+        $("#cartCount").text(cartCount);
+        $(this).hide();
+        $(this).siblings(".qtyBox").show();
+        $(this).siblings(".qtyBox").find(".qty").text(1);
+    });
+    $("#productList").on("click", ".inc", function(){
+        let qty = parseInt($(this).siblings(".qty").text());
+        qty++;
+        $(this).siblings(".qty").text(qty);
+        cartCount++;
+        $("#cartCount").text(cartCount);
+    });
+    $("#productList").on("click", ".dec", function(){
+        let qty = parseInt($(this).siblings(".qty").text());
+        qty--;
+
+        if(qty <= 0){
+            cartCount--;
+            $("#cartCount").text(cartCount);
+
+            $(this).parent(".qtyBox").hide();
+            $(this).parent(".qtyBox").siblings(".addBtn").show();
+        }
+        else{
+            $(this).siblings(".qty").text(qty);
+            cartCount--;
+            $("#cartCount").text(cartCount);
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+

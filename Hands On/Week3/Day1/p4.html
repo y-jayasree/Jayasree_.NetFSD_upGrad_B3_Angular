@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery To-Do App</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body{
+            font-family: Arial;
+            background:white;
+        }
+        .container{
+            width:500px;
+            margin:50px auto;
+            background:white;
+            padding:20px;
+            border-radius:5px;
+        }
+        input{
+            width:70%;
+            padding:8px;
+        }
+        button{
+            padding:8px 12px;
+            margin-left:5px;
+        }
+        ul{
+            list-style:none;
+            padding:0;
+            margin-top:20px;
+        }
+        li{
+            padding:8px;
+            background:#eee;
+            margin-bottom:8px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .completed{
+            text-decoration: line-through;
+            color: gray;
+        }
+        .counts{
+            margin-top:15px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button id="addBtn">Add</button>
+    <ul id="taskList"></ul>
+    <div class="counts">
+        Total Tasks: <span id="totalCount">0</span> |
+        Completed: <span id="completedCount">0</span>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+
+    let total = 0;
+    let completed = 0;
+    $("#addBtn").click(function(){
+        let taskText = $("#taskInput").val().trim();
+        if(taskText === "") return;
+        let li = `
+            <li>
+                <span class="taskText">${taskText}</span>
+                <div>
+                    <button class="completeBtn">completed</button>
+                    <button class="deleteBtn">Remove</button>
+                </div>
+            </li>
+        `;
+        $("#taskList").append(li);
+        total++;
+        $("#totalCount").text(total);
+        $("#taskInput").val("");
+    });
+    $("#taskList").on("click", ".completeBtn", function(){
+        let task = $(this).closest("li").find(".taskText");
+        if(!task.hasClass("completed")){
+            task.addClass("completed");
+            completed++;
+        }
+        else{
+            task.removeClass("completed");
+            completed--;
+        }
+
+        $("#completedCount").text(completed);
+    });
+    $("#taskList").on("click", ".deleteBtn", function(){
+        let task = $(this).closest("li");
+        if(task.find(".taskText").hasClass("completed")){
+            completed--;
+            $("#completedCount").text(completed);
+        }
+        task.remove();
+        total--;
+        $("#totalCount").text(total);
+    });
+
+});
+
+</script>
+
+</body>
+</html>

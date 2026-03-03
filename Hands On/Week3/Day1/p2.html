@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAQ Effects</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body{
+            font-family: Arial;
+            background:white;
+        }
+        .container{
+            width:600px;
+            margin:50px auto;
+        }
+        .faq-item{
+            background:white;
+            padding:15px;
+            margin-bottom:10px;
+            border-radius:5px;
+        }
+        .question{
+            cursor:pointer;
+            font-weight:bold;
+        }
+        .answer{
+            display:none;
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="faq-item">
+        <div class="question" id="q1">1. What courses do you offer?</div>
+        <div class="answer" id="a1">We offer Web Development, Python and Java.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question" id="q2">2. Do you provide certificates?</div>
+        <div class="answer" id="a2">Yes, certificates are provided.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question" id="q3">3. What is course duration?</div>
+        <div class="answer" id="a3">Duration is 3 to 6 months.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question" id="q4">4. Is placement support available?</div>
+        <div class="answer" id="a4">Yes, placement assistance is available.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question" id="q5">5. Are online classes available?</div>
+        <div class="answer" id="a5">Yes online and offline classes are available.</div>
+    </div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+    $("#q1").click(function(){
+        $("#a1").slideToggle(300);
+    });
+    $("#q2").click(function(){
+        $("#a2").fadeToggle(2000);
+    });
+    $("#q3").click(function(){
+        $("#a3").toggle(); 
+    });
+    $("#q4").click(function(){
+        $("#a4").slideToggle();
+    });
+    $("#q5").click(function(){
+        $("#a5").fadeToggle(300);
+    });
+});
+</script>
+</body>
+</html>
+
