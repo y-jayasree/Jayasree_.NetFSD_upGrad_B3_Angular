@@ -1,0 +1,11 @@
+@model List<WebApplication2.Models.Product>
+
+<h2>All Products</h2>
+
+@foreach (var p in Model)
+{
+    <p>
+        @p.Name - ₹@p.Price
+        <a asp-action="Details" asp-route-id="@p.Id">Details</a>
+    </p>
+}
