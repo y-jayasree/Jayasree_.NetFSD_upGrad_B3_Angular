@@ -1,0 +1,44 @@
+@model List<WebApplication1.Models.Product>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Product List</h2>
+
+    <a asp-action="Create" class="btn btn-success mb-3">Add Product</a>
+
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.ProductId</td>
+                        <td>@p.ProductName</td>
+                        <td>@p.Price</td>
+                        <td>@p.Category</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@p.ProductId" class="btn btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@p.ProductId" class="btn btn-sm">Delete</a>
+                            <a asp-action="Details" asp-route-id="@p.ProductId" class="btn btn-sm">Details</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-danger">No Products Available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
