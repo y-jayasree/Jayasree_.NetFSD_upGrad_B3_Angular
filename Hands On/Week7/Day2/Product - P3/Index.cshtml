@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "Product Entry";
+}
+
+<h2>Add Product</h2>
+
+<form method="post" action="/product1/index">
+    <label>Product Name:</label>
+    <input type="text" name="name" required />
+    <br /><br />
+
+    <label>Price:</label>
+    <input type="number" name="price" step="0.01" required />
+    <br /><br />
+
+    <label>Quantity:</label>
+    <input type="number" name="quantity" required />
+    <br /><br />
+
+    <button type="submit">Add Product</button>
+</form>
+
+<hr />
+
+<h2>Product List</h2>
+
+@if (ViewBag.Products != null && ViewBag.Products.Count > 0)
+{
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+
+        @foreach (var item in ViewBag.Products)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No products added yet.</p>
+}
+<style>
+    table {
+        width: 60%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+
