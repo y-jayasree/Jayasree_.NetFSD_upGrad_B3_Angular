@@ -1,1 +1,46 @@
+@model ContactInfo
+
+<h2>Add Contact</h2>
+<form asp-action="AddContact" method="post"><br />
+    <div>
+        <label>Contact ID:</label>
+        <input asp-for="ContactId" />
+        <span asp-validation-for="ContactId" style="color:red"></span>
+    </div><br />
+    <div>
+        <label>First Name:</label>
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName" style="color:red"></span>
+    </div><br />
+    <div>
+        <label>Last Name:</label>
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName" style="color:red"></span>
+    </div><br />
+    <div>
+        <label>Company Name:</label>
+        <input asp-for="CompanyName" />
+        <span asp-validation-for="CompanyName" style="color:red"></span>
+    </div><br />
+    <div>
+        <label>Email:</label>
+        <input asp-for="EmailId" />
+        <span asp-validation-for="EmailId" style="color:red"></span>
+    </div><br />
+    <div>
+        <label>Mobile No:</label>
+        <input asp-for="MobileNo" />
+        <span asp-validation-for="MobileNo" style="color:red"></span>
+    </div><br />
+    <div>
+        <label>Designation:</label>
+        <input asp-for="Designation" />
+        <span asp-validation-for="Designation" style="color:red"></span>
+    </div><br />
+    <button type="submit">Add Contact</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 
