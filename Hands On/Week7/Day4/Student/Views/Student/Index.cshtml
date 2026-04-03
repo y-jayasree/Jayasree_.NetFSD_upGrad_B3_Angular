@@ -1,0 +1,21 @@
+﻿@model List<Student>
+
+<h2>Student List</h2>
+
+<a href="/Student/Create">Add Student</a>
+
+<table class="table table-bordered" style="width:40%">
+    <tr>
+        <th>Student Name:</th><br />
+        <th>Course Name:</th>
+    </tr>
+
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.StudentName</td>
+            <td>@s.Course.CourseName</td>
+        </tr>
+    }
+</table>
+
