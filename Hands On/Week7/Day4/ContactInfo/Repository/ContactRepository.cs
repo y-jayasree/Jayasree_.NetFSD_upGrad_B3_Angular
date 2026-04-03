@@ -51,11 +51,9 @@ namespace WebApplication4.Repository
                 _context.SaveChanges();
             }
         }
-
-        // New methods for dropdowns
         public List<Company> GetAllCompanies()
         {
-            return _context.Companies.ToList(); // <- never null
+            return _context.Companies.ToList(); 
         }
 
         public List<Department> GetAllDepartments()
