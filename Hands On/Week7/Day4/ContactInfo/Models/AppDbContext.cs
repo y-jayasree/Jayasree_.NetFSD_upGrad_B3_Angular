@@ -5,7 +5,6 @@ namespace WebApplication4.Models
 {
     public class AppDbContext : DbContext
     {
-        // Constructor that accepts options
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<ContactInfo> Contacts { get; set; }
@@ -14,14 +13,14 @@ namespace WebApplication4.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Company → Contacts
+            // Company 
             modelBuilder.Entity<ContactInfo>()
                 .HasOne(c => c.Company)
                 .WithMany(c => c.Contacts)
                 .HasForeignKey(c => c.CompanyId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Department → Contacts
+            // Department
             modelBuilder.Entity<ContactInfo>()
                 .HasOne(c => c.Department)
                 .WithMany(d => d.Contacts)
