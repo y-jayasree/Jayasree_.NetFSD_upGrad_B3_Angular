@@ -41,7 +41,6 @@
 
     <div class="form-group">
         <label>Company</label>
-        @* Use ViewBag directly without 'new SelectList' *@
         <select asp-for="CompanyId" class="form-control" asp-items="ViewBag.Companies">
             <option value="">-- Select Company --</option>
         </select>
@@ -50,7 +49,6 @@
 
     <div class="form-group">
         <label>Department</label>
-        @* Use ViewBag directly without 'new SelectList' *@
         <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.Departments">
             <option value="">-- Select Department --</option>
         </select>
