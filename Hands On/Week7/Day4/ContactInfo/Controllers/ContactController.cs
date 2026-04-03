@@ -41,21 +41,14 @@ namespace WebApplication4.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddContact(ContactInfo contact)
         {
-            // If you still have issues, put a breakpoint here 
-            // and check ModelState.IsValid in the Watch window
             if (ModelState.IsValid)
             {
                 _service.AddContact(contact);
-
-                // Ensure this matches your [HttpGet("all")] method name
                 return RedirectToAction("ShowContacts");
             }
-
-            // If validation fails, we must reload the dropdowns before returning the view
             PopulateDropdowns();
             return View(contact);
         }
-
 
         [HttpGet("edit/{id}")]
         public IActionResult EditContact(int id)
@@ -73,7 +66,6 @@ namespace WebApplication4.Controllers
             if (ModelState.IsValid)
             {
                 _service.UpdateContact(contact);
-                // Explicitly redirect to the action and controller
                 return RedirectToAction("ShowContacts", "Contact");
             }
 
