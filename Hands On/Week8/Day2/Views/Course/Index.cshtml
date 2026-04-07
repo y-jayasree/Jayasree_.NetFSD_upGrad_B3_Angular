@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebApplication5.Models.Course>
+
+<h4>Courses with Students</h4><br />
+
+@foreach (var course in Model)
+{
+    <h5>@course.CourseName</h5>
+
+    @if (course.Students != null && course.Students.Count > 0)
+    {
+        <ul>
+            @foreach (var student in course.Students)
+            {
+                <li>@student.StudentName</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No students enrolled</p>
+    }
+}
+
