@@ -1,0 +1,26 @@
+﻿@model WebApplication5.Models.ContactInfo
+@{
+    ViewData["Title"] = "Edit Contact";
+}
+
+<h2>Edit Contact</h2>
+
+<form asp-action="EditContact" method="post">
+    <input type="hidden" asp-for="ContactId" />
+
+    <input asp-for="FirstName" placeholder="First Name" class="form-control" /><br />
+    <input asp-for="LastName" placeholder="Last Name" class="form-control" /><br />
+    <input asp-for="EmailId" placeholder="Email" class="form-control" /><br />
+    <input asp-for="MobileNo" placeholder="Mobile" class="form-control" /><br />
+    <input asp-for="Designation" placeholder="Designation" class="form-control" /><br />
+
+    <select asp-for="CompanyId" asp-items="ViewBag.Companies" class="form-select"></select><br /><br />
+    <select asp-for="DepartmentId" asp-items="ViewBag.Departments" class="form-select"></select><br /><br />
+
+    <button type="submit" class="btn btn-sec">Update</button>
+    <a href="/Contact/ShowContacts" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
