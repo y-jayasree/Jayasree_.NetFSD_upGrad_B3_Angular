@@ -1,0 +1,58 @@
+[
+  {"id":1,"name":"Dell Laptop",
+  "description":"16GB RAM",
+  "price":65000,"category":
+  "Electronics",
+  "image":"images/laptop.jpg"},
+
+  {"id":2,"name":"iPhone 13",
+  "description":"Apple phone",
+  "price":70000,
+  "category":"Electronics",
+  "image":"images/mobile.jpg"},
+
+  {"id":3,"name":"Headphones",
+  "description":"Wireless",
+  "price":2000,
+  "category":"Electronics",
+  "image":"images/headphones.jpg"},
+
+  {"id":4,
+  "name":"Smart Watch",
+  "description":"Fitness watch",
+  "price":5000,"category":"Electronics",
+  "image":"images/watch.jpg"},
+
+  {"id":5,
+  "name":"Shoes",
+  "description":"Running shoes",
+  "price":3000,
+  "category":"Fashion",
+  "image":"images/shoes.jpg"},
+
+  {"id":6,
+  "name":"T-Shirt",
+  "description":"Cotton","price":800,
+  "category":"Fashion",
+  "image":"images/tshirt.jpg"},
+
+  {"id":7,"name":"Jeans",
+  "description":"Denim","price":1500,
+  "category":"Fashion",
+  "image":"images/jeans.jpg"},
+
+  {"id":8,"name":"Jacket",
+  "description":"Winter wear","price":2500,
+  "category":"Fashion",
+  "image":"images/jacket.jpg"},
+
+  {"id":9,"name":"Tablet",
+  "description":"Android tablet","price":20000,
+  "category":"Electronics",
+  "image":"images/tablet.jpg"},
+
+  {"id":10,"name":"Backpack",
+  "description":"Travel bag","price":1200,
+  "category":"Fashion",
+  "image":"images/bag.jpg"}
+]

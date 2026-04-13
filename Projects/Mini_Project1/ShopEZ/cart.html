@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart - ShopEZ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      padding-top: 70px;    
+      padding-bottom: 70px; 
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: black;
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      z-index: 1000;
+    }
+    #msg {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="navbar"></div>
+
+<main class="container mt-3">
+  <h2>Shopping Cart</h2>
+  <p id="msg" class="text-success"></p>
+
+  <table class="table table-bordered align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody id="cartBody"></tbody>
+  </table>
+
+  <h4>Total: <span id="total">₹0</span></h4>
+  <a href="checkout.html" class="btn btn-success mt-2">Proceed to Checkout</a>
+</main>
+
+<footer>© ShopEZ 2026</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login - ShopEZ</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="d-flex flex-column justify-content-center align-items-center" style="min-height:100vh; background:#f5f5f5;">
+
+<div class="card p-4 shadow" style="width:350px;">
+  <h2 class="text-center mb-3">Login</h2>
+  <form id="loginForm">
+    <div class="mb-3">
+      <label for="loginEmail" class="form-label">Email</label>
+      <input type="email" id="loginEmail" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="loginPassword" class="form-label">Password</label>
+      <input type="password" id="loginPassword" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success w-100">Login</button>
+    <p class="mt-2 text-center">Don't have an account? <a href="register.html">Register</a></p>
+    <p id="loginMsg" class="text-danger mt-1 text-center"></p>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$("#loginForm").submit(function(e){
+  e.preventDefault();
+  const email = $("#loginEmail").val();
+  const password = $("#loginPassword").val();
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let user = users.find(u => u.email === email && u.password === password);
+  if(user){
+    localStorage.setItem("currentUser", JSON.stringify({name:user.name,email:user.email}));
+    window.location.href = "index.html";
+  } else {
+    $("#loginMsg").text("Invalid email or password");
+  }
+});
+</script>
+</body>
+</html>
