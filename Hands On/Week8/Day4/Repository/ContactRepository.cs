@@ -1,0 +1,55 @@
+﻿using WebApplication6.Data;
+using WebApplication6.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace WebApplication6.Repository
+{
+    public class ContactRepository : IContactRepository
+    {
+        private readonly AppDbContext _context;
+
+        public ContactRepository(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<List<ContactInfo>> GetAllAsync()
+        {
+            return await _context.Contacts
+                .Include(c => c.Company)
+                .Include(c => c.Department)
+                .ToListAsync();
+        }
+
+        public async Task<ContactInfo> GetByIdAsync(int id)
+        {
+            return await _context.Contacts
+                .Include(c => c.Company)
+                .Include(c => c.Department)
+                .FirstOrDefaultAsync(c => c.ContactId == id);
+        }
+
+        public async Task AddAsync(ContactInfo contact)
+        {
+            await _context.Contacts.AddAsync(contact);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(ContactInfo contact)
+        {
+            _context.Contacts.Update(contact);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var contact = await _context.Contacts.FindAsync(id);
+            if (contact != null)
+            {
+                _context.Contacts.Remove(contact);
+                await _context.SaveChangesAsync();
+            }
+        }
+    }
+
+}
