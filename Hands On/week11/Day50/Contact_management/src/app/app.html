@@ -1,0 +1,45 @@
+<h2>Contact Management</h2>
+
+<!-- TWO WAY BINDING -->
+<input type="text" [(ngModel)]="searchText" placeholder="Search by name/email">
+
+<br><br>
+
+<table border="1" cellpadding="10">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <tr *ngFor="let contact of contacts 
+              | search:searchText 
+              | slice:0:showCount">
+
+    <!-- INTERPOLATION + PIPES -->
+    <td>{{ contact.name | titlecase }}</td>
+    <td>{{ contact.email | lowercase }}</td>
+    <td>{{ contact.phone | phoneFormat }}</td>
+
+    <!-- PROPERTY BINDING -->
+    <td [style.color]="contact.status ? 'green' : 'red'">
+      {{ contact.status | status }}
+    </td>
+
+    <!-- EVENT BINDING -->
+    <td>
+      <button (click)="toggleStatus(contact)">
+        Toggle
+      </button>
+    </td>
+
+  </tr>
+</table>
+
+<br>
+
+<!-- SHOW MORE / LESS -->
+<button (click)="showMore()">Show More</button>
+<button (click)="showLess()">Show Less</button>
