@@ -1,0 +1,21 @@
+<h3>Get Contact By ID</h3>
+
+<input type="number" [(ngModel)]="id" placeholder="Enter ID">
+<button (click)="getContact()">Search</button>
+
+<div *ngIf="contact">
+  <p>Name: {{ contact.name }}</p>
+  <p>Email: {{ contact.email }}</p>
+  <p>Phone: {{ contact.phone }}</p>
+</div>
+
+<p *ngIf="!contact && id">No contact found</p>
+
+<hr>
+
+<h2>All Contacts</h2>
+
+
+<li *ngFor="let c of contacts">
+    {{ c.id }} - {{ c.name }} - {{ c.email }} - {{ c.phone }}
+</li>
