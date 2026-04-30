@@ -1,0 +1,35 @@
+
+
+<input [(ngModel)]="contact.name" placeholder="Name">
+<input [(ngModel)]="contact.email" placeholder="Email">
+<input [(ngModel)]="contact.phone" placeholder="Phone">
+
+<br><br>
+
+<button (click)="getAllContacts()">Get Contacts</button>
+<button *ngIf="!isEditMode" (click)="addContact()">Add Contact</button>
+<button *ngIf="isEditMode" (click)="updateContact()">Update Contact</button>
+<button *ngIf="isEditMode" (click)="resetForm()">Cancel</button>
+
+<hr>
+
+<table border="1" width="80%">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Actions</th>
+  </tr>
+
+  <tr *ngFor="let c of contacts">
+    <td>{{c.contactId}}</td>
+    <td>{{c.name}}</td>
+    <td>{{c.email}}</td>
+    <td>{{c.phone}}</td>
+    <td>
+      <button (click)="selectContact(c)">Edit</button>
+      <button (click)="delete(c.contactId)">Remove</button>
+    </td>
+  </tr>
+</table>
