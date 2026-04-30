@@ -1,0 +1,28 @@
+<h2>Contact List (Directives)</h2>
+
+<div *ngIf="contacts.length === 0">
+  No Contacts Available
+</div>
+
+<table *ngIf="contacts.length > 0" border="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Status</th>
+  </tr>
+
+  <tr *ngFor="let c of contacts"
+      [ngClass]="c.isActive ? 'active' : 'inactive'"
+      [ngStyle]="{ color: c.isActive ? 'green' : 'red' }">
+
+    <td>{{ c.name }}</td>
+    <td>{{ c.email }}</td>
+    <td>{{ c.phone }}</td>
+
+    <td>
+      <span *ngIf="c.isActive; else inactive">Active</span>
+      <ng-template #inactive>Inactive</ng-template>
+    </td>
+  </tr>
+</table>

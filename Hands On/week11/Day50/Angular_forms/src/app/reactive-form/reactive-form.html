@@ -1,0 +1,34 @@
+<h2>Reactive Form</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <input formControlName="name" placeholder="Name">
+  <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+    Name required
+  </div>
+
+  <input formControlName="email" placeholder="Email">
+  <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+    Valid email required
+  </div>
+
+  <input formControlName="phone" placeholder="Phone">
+  <div *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">
+    Valid phone required
+  </div>
+
+  <label>
+    <input type="checkbox" formControlName="isActive">
+    Active
+  </label>
+
+  <button type="submit">Submit</button>
+</form>
+
+<hr>
+
+<ul>
+  <li *ngFor="let c of contacts">
+    {{ c.name }} | {{ c.email }} | {{ c.phone }} | {{ c.isActive }}
+  </li>
+</ul>

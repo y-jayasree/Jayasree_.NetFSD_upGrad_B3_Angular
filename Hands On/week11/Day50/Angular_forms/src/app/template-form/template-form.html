@@ -1,0 +1,45 @@
+<h2>Template Driven Form</h2>
+
+<form #f="ngForm" (ngSubmit)="addContact(f)">
+
+  <input name="name"
+         [(ngModel)]="contact.name"
+         required
+         #name="ngModel"
+         placeholder="Name">
+
+  <div *ngIf="name.invalid && name.touched">Name required</div>
+
+  <input name="email"
+         [(ngModel)]="contact.email"
+         required
+         email
+         #email="ngModel"
+         placeholder="Email">
+
+  <div *ngIf="email.invalid && email.touched">Valid email required</div>
+
+  <input name="phone"
+         [(ngModel)]="contact.phone"
+         required
+         minlength="10"
+         #phone="ngModel"
+         placeholder="Phone">
+
+  <div *ngIf="phone.invalid && phone.touched">Valid phone required</div>
+
+  <label>
+    <input type="checkbox" name="isActive" [(ngModel)]="contact.isActive">
+    Active
+  </label>
+
+  <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<ul>
+  <li *ngFor="let c of contacts">
+    {{ c.name }} | {{ c.email }} | {{ c.phone }} | {{ c.isActive }}
+  </li>
+</ul>
