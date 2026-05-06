@@ -23,22 +23,22 @@
 
       <div class="detail-grid">
         <div class="detail-item">
-          <span class="detail-label">📧 Email</span>
+          <span class="detail-label">Email</span>
           <span class="detail-value">{{ contact.email }}</span>
         </div>
         <div class="detail-item">
-          <span class="detail-label">📞 Phone</span>
+          <span class="detail-label"> Phone</span>
           <span class="detail-value">{{ contact.phone }}</span>
         </div>
         <div class="detail-item">
-          <span class="detail-label">🆔 Contact ID</span>
+          <span class="detail-label">Contact ID</span>
           <span class="detail-value">#{{ contact.contactId }}</span>
         </div>
       </div>
 
       <div class="detail-actions">
-        <a [routerLink]="['/edit', contact.contactId]" class="btn btn-secondary">✏️ Edit</a>
-        <button (click)="onDelete(contact.contactId)" class="btn btn-danger">🗑️ Delete</button>
+        <a [routerLink]="['/edit', contact.contactId]" class="btn btn-secondary">Edit</a>
+        <button (click)="onDelete(contact.contactId)" class="btn btn-danger">Delete</button>
       </div>
     </div>
 
