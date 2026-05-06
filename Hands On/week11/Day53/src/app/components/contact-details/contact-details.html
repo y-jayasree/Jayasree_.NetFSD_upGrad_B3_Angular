@@ -1,0 +1,53 @@
+<div class="page-wrapper">
+
+  <div class="back-link">
+    <a routerLink="/contacts" class="btn btn-outline">← Back to Contacts</a>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-error">{{ errorMessage }}</div>
+
+  <!--
+    async pipe subscribes to contact$ (driven by switchMap on route params)
+    and automatically unsubscribes when the component is destroyed.
+  -->
+  <ng-container *ngIf="contact$ | async as contact; else loading">
+
+    <div class="detail-card">
+      <div class="detail-header">
+        <div class="avatar">{{ contact.name.charAt(0).toUpperCase() }}</div>
+        <div>
+          <h2 class="contact-name">{{ contact.name }}</h2>
+          <span class="badge">Category {{ contact.categoryId }}</span>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-item">
+          <span class="detail-label">📧 Email</span>
+          <span class="detail-value">{{ contact.email }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">📞 Phone</span>
+          <span class="detail-value">{{ contact.phone }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">🆔 Contact ID</span>
+          <span class="detail-value">#{{ contact.contactId }}</span>
+        </div>
+      </div>
+
+      <div class="detail-actions">
+        <a [routerLink]="['/edit', contact.contactId]" class="btn btn-secondary">✏️ Edit</a>
+        <button (click)="onDelete(contact.contactId)" class="btn btn-danger">🗑️ Delete</button>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <ng-template #loading>
+    <div *ngIf="!errorMessage" class="loading-indicator">
+      <span class="spinner"></span> Loading contact details…
+    </div>
+  </ng-template>
+
+</div>

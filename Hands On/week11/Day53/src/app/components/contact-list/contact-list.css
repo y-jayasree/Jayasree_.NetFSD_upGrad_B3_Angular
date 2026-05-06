@@ -1,0 +1,163 @@
+/* ── Contact List Styles ─────────────────────────────── */
+.page-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* ── Alert Banners ───────────────────────────────────── */
+.alert {
+  padding: .75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: .9rem;
+  font-weight: 500;
+}
+.alert-error   { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+.alert-success { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+
+/* ── Card ────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+.card-title { margin: 0 0 1rem; font-size: 1rem; font-weight: 600; color: #334155; }
+
+/* ── Form ────────────────────────────────────────────── */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 160px;
+  gap: .3rem;
+}
+.form-field--sm { flex: 0 0 80px; }
+.form-field label { font-size: .8rem; color: #64748b; font-weight: 500; }
+.form-field input {
+  padding: .45rem .7rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: .9rem;
+  outline: none;
+  transition: border-color .15s;
+}
+.form-field input:focus { border-color: #6366f1; }
+.error { font-size: .75rem; color: #dc2626; }
+
+/* ── Search ──────────────────────────────────────────── */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: .5rem .75rem;
+  margin-bottom: 1.25rem;
+  gap: .5rem;
+}
+.search-icon { font-size: 1rem; }
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: .95rem;
+  color: #1e293b;
+}
+
+/* ── Loading ─────────────────────────────────────────── */
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: #6366f1;
+  font-size: .9rem;
+  margin-bottom: 1rem;
+}
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid #c7d2fe;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Empty state ─────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  color: #94a3b8;
+  padding: 3rem 1rem;
+  font-style: italic;
+}
+
+/* ── Table ───────────────────────────────────────────── */
+.table-wrapper { overflow-x: auto; }
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+.contacts-table th {
+  background: #f1f5f9;
+  color: #475569;
+  font-weight: 600;
+  text-align: left;
+  padding: .65rem .9rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+.contacts-table td {
+  padding: .65rem .9rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+.contacts-table tr:hover td { background: #f8fafc; }
+.td-id   { color: #94a3b8; font-size: .8rem; }
+.td-name { font-weight: 600; }
+.td-actions { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: .5rem 1rem;
+  border-radius: 6px;
+  font-size: .875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: opacity .15s, transform .1s;
+}
+.btn:hover   { opacity: .85; transform: translateY(-1px); }
+.btn:active  { transform: translateY(0); }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.btn-primary   { background: #6366f1; color: #fff; }
+.btn-secondary { background: #0ea5e9; color: #fff; }
+.btn-outline   { background: transparent; color: #6366f1; border: 1px solid #6366f1; }
+.btn-danger    { background: #ef4444; color: #fff; }
+.btn-sm        { padding: .3rem .65rem; font-size: .8rem; border-radius: 4px; }

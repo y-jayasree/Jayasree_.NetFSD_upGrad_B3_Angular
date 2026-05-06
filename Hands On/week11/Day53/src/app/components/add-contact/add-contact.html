@@ -1,0 +1,50 @@
+<div class="page-wrapper">
+  <div class="back-link">
+    <a routerLink="/contacts" class="btn btn-outline">← Back</a>
+  </div>
+
+  <div class="form-card">
+    <h2 class="form-title">➕ Add New Contact</h2>
+
+    <div *ngIf="errorMessage" class="alert alert-error">{{ errorMessage }}</div>
+
+    <!-- Reactive Form: [formGroup] binding, (ngSubmit) handler -->
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <div class="form-field">
+        <label>Full Name *</label>
+        <input formControlName="name" placeholder="Jane Doe" />
+        <span class="error" *ngIf="f['name'].touched && f['name'].errors?.['required']">Name is required.</span>
+        <span class="error" *ngIf="f['name'].touched && f['name'].errors?.['minlength']">Minimum 2 characters.</span>
+      </div>
+
+      <div class="form-field">
+        <label>Email Address *</label>
+        <input formControlName="email" type="email" placeholder="jane@example.com" />
+        <span class="error" *ngIf="f['email'].touched && f['email'].errors?.['required']">Email is required.</span>
+        <span class="error" *ngIf="f['email'].touched && f['email'].errors?.['email']">Enter a valid email address.</span>
+      </div>
+
+      <div class="form-field">
+        <label>Phone Number *</label>
+        <input formControlName="phone" placeholder="10 digits, e.g. 9876543210" />
+        <span class="error" *ngIf="f['phone'].touched && f['phone'].errors?.['required']">Phone is required.</span>
+        <span class="error" *ngIf="f['phone'].touched && f['phone'].errors?.['pattern']">Must be exactly 10 digits.</span>
+      </div>
+
+      <div class="form-field">
+        <label>Category ID *</label>
+        <input formControlName="categoryId" type="number" min="1" />
+        <span class="error" *ngIf="f['categoryId'].touched && f['categoryId'].errors?.['min']">Must be at least 1.</span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Saving…' : '✓ Save Contact' }}
+        </button>
+        <a routerLink="/contacts" class="btn btn-ghost">Cancel</a>
+      </div>
+
+    </form>
+  </div>
+</div>

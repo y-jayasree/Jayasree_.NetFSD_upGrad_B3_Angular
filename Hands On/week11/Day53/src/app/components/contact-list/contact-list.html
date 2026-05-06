@@ -1,0 +1,120 @@
+<div class="page-wrapper">
+
+  <!-- ── Header ───────────────────────────────────────── -->
+  <div class="page-header">
+    <h2 class="page-title">📋 Contacts</h2>
+    <a routerLink="/add-contact" class="btn btn-primary">＋ New Contact</a>
+  </div>
+
+  <!-- ── Alerts ───────────────────────────────────────── -->
+  <div *ngIf="errorMessage" class="alert alert-error">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+  <!-- ── Inline Add Form (Reactive Form) ──────────────── -->
+  <div class="card form-card">
+    <h3 class="card-title">Add New Contact</h3>
+    <form [formGroup]="addForm" (ngSubmit)="onAddContact()" novalidate>
+      <div class="form-row">
+
+        <div class="form-field">
+          <label>Name</label>
+          <input formControlName="name" placeholder="Full name" />
+          <span class="error" *ngIf="f['name'].touched && f['name'].errors?.['required']">
+            Name is required.
+          </span>
+          <span class="error" *ngIf="f['name'].touched && f['name'].errors?.['minlength']">
+            At least 2 characters.
+          </span>
+        </div>
+
+        <div class="form-field">
+          <label>Email</label>
+          <input formControlName="email" type="email" placeholder="user@example.com" />
+          <span class="error" *ngIf="f['email'].touched && f['email'].errors?.['required']">
+            Email is required.
+          </span>
+          <span class="error" *ngIf="f['email'].touched && f['email'].errors?.['email']">
+            Enter a valid email.
+          </span>
+        </div>
+
+        <div class="form-field">
+          <label>Phone</label>
+          <input formControlName="phone" placeholder="10-digit number" />
+          <span class="error" *ngIf="f['phone'].touched && f['phone'].errors?.['required']">
+            Phone is required.
+          </span>
+          <span class="error" *ngIf="f['phone'].touched && f['phone'].errors?.['pattern']">
+            Must be exactly 10 digits.
+          </span>
+        </div>
+
+        <div class="form-field form-field--sm">
+          <label>Category</label>
+          <input formControlName="categoryId" type="number" min="1" />
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid">Add Contact</button>
+    </form>
+  </div>
+
+  <!-- ── Search Box ────────────────────────────────────── -->
+  <!--
+    searchControl uses debounceTime + distinctUntilChanged in the component
+    to filter the contacts$ stream reactively — no click handler needed.
+  -->
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input [formControl]="searchControl"
+           placeholder="Search by name, email or phone…"
+           class="search-input" />
+  </div>
+
+  <!-- ── Loading Spinner ──────────────────────────────── -->
+  <div *ngIf="isLoading" class="loading-indicator">
+    <span class="spinner"></span> Loading contacts…
+  </div>
+
+  <!-- ── Contacts Table ────────────────────────────────────
+       Uses async pipe: subscribes and unsubscribes automatically.
+       filteredContacts$ combines contacts$ stream + search stream.
+  ────────────────────────────────────────────────────────── -->
+  <ng-container *ngIf="filteredContacts$ | async as contacts">
+
+    <div *ngIf="contacts.length === 0 && !isLoading" class="empty-state">
+      No contacts match your search.
+    </div>
+
+    <div class="table-wrapper" *ngIf="contacts.length > 0">
+      <table class="contacts-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Cat.</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of contacts">
+            <td class="td-id">{{ c.contactId }}</td>
+            <td class="td-name">{{ c.name }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.phone }}</td>
+            <td class="td-id">{{ c.categoryId }}</td>
+            <td class="td-actions">
+              <a [routerLink]="['/contact', c.contactId]" class="btn btn-sm btn-outline">View</a>
+              <a [routerLink]="['/edit', c.contactId]" class="btn btn-sm btn-secondary">Edit</a>
+              <button (click)="onDelete(c.contactId)" class="btn btn-sm btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </ng-container>
+
+</div>

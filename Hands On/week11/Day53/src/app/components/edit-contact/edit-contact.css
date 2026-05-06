@@ -1,0 +1,19 @@
+.page-wrapper { max-width: 520px; margin: 0 auto; padding: 1.5rem 1rem; font-family: 'Segoe UI', system-ui, sans-serif; }
+.back-link { margin-bottom: 1.25rem; }
+.form-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.form-title { margin: 0 0 1.5rem; font-size: 1.3rem; font-weight: 700; color: #1e293b; }
+.alert { padding: .75rem 1rem; border-radius: 6px; margin-bottom: 1rem; font-size: .9rem; }
+.alert-error { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+.form-field { display: flex; flex-direction: column; gap: .3rem; margin-bottom: 1.1rem; }
+.form-field label { font-size: .82rem; font-weight: 600; color: #475569; }
+.form-field input { padding: .55rem .75rem; border: 1px solid #cbd5e1; border-radius: 7px; font-size: .95rem; outline: none; transition: border-color .15s, box-shadow .15s; }
+.form-field input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.15); }
+.form-field input.ng-invalid.ng-touched { border-color: #ef4444; }
+.error { font-size: .77rem; color: #dc2626; }
+.form-actions { display: flex; gap: .75rem; margin-top: 1.5rem; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: .55rem 1.2rem; border-radius: 6px; font-size: .9rem; font-weight: 500; cursor: pointer; border: none; text-decoration: none; transition: opacity .15s; }
+.btn:hover { opacity: .85; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn-primary { background: #6366f1; color: #fff; }
+.btn-outline { background: transparent; color: #6366f1; border: 1px solid #6366f1; }
+.btn-ghost { background: transparent; color: #64748b; }

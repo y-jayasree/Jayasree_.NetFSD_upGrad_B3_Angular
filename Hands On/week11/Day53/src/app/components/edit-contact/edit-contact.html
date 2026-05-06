@@ -1,0 +1,52 @@
+<div class="page-wrapper">
+  <div class="back-link">
+    <a routerLink="/contacts" class="btn btn-outline">← Back</a>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-error">{{ errorMessage }}</div>
+
+  <div *ngIf="isLoading && !errorMessage" class="loading-indicator">
+    <span class="spinner"></span> Loading contact…
+  </div>
+
+  <div class="form-card" *ngIf="!isLoading">
+    <h2 class="form-title">✏️ Edit Contact</h2>
+
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()" novalidate>
+      <input type="hidden" formControlName="contactId" />
+
+      <div class="form-field">
+        <label>Full Name *</label>
+        <input formControlName="name" />
+        <span class="error" *ngIf="f['name'].touched && f['name'].errors?.['required']">Required.</span>
+        <span class="error" *ngIf="f['name'].touched && f['name'].errors?.['minlength']">Min 2 characters.</span>
+      </div>
+
+      <div class="form-field">
+        <label>Email Address *</label>
+        <input formControlName="email" type="email" />
+        <span class="error" *ngIf="f['email'].touched && f['email'].errors?.['required']">Required.</span>
+        <span class="error" *ngIf="f['email'].touched && f['email'].errors?.['email']">Invalid email.</span>
+      </div>
+
+      <div class="form-field">
+        <label>Phone Number *</label>
+        <input formControlName="phone" />
+        <span class="error" *ngIf="f['phone'].touched && f['phone'].errors?.['required']">Required.</span>
+        <span class="error" *ngIf="f['phone'].touched && f['phone'].errors?.['pattern']">Must be 10 digits.</span>
+      </div>
+
+      <div class="form-field">
+        <label>Category ID *</label>
+        <input formControlName="categoryId" type="number" min="1" />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" [disabled]="isSubmitting || editForm.invalid">
+          {{ isSubmitting ? 'Saving…' : '✓ Update Contact' }}
+        </button>
+        <a routerLink="/contacts" class="btn btn-ghost">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
